@@ -9,6 +9,11 @@ class Api::V1::BeersController < ApplicationController
     render json: beers
   end
 
+  def show
+    beer = [{ 'identifer' => 1, 'name' => 'Lager Beer', 'description' => 'Best beer ever' }]
+    render json: beer
+  end
+
   private
 
   def build_url
