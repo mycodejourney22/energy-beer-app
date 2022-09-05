@@ -17,4 +17,12 @@ RSpec.describe Api::V1::BeersController,  :type => :controller do
       end
     end
   end
+
+  describe 'GET/show' do
+
+    it 'test http status' do
+      get :show, params: { user_route: '/api/v1/beers/', id: 1}
+      expect(response.status).to eql(200)
+    end
+  end
 end
