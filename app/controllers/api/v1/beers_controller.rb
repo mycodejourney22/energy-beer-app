@@ -1,3 +1,5 @@
+require 'rest-client'
+
 class Api::V1::BeersController < ApplicationController
 
   def index
