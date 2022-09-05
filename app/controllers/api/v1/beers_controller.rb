@@ -10,7 +10,9 @@ class Api::V1::BeersController < ApplicationController
   end
 
   def show
-    beer = [{ 'identifer' => 1, 'name' => 'Lager Beer', 'description' => 'Best beer ever' }]
+    url = build_url_for_show(params[:id])
+    result = make_beer_request(url)
+    beer = form_json_object(result)
     render json: beer
   end
 
@@ -22,6 +24,10 @@ class Api::V1::BeersController < ApplicationController
 
   def build_url_with_params(params)
     "https://api.punkapi.com/v2/beers?beer_name=#{params}"
+  end
+
+  def build_url_for_show(id)
+    "https://api.punkapi.com/v2/beers/#{id}"
   end
 
   def make_beer_request(url)
